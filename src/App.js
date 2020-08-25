@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import "./App.scss";
 import ClockPage from "./components/ClockPage";
 import TimeZone from "./components/TimeZone";
+import Header from "./components/Header";
+import Main from "./components/Main";
 
 function App() {
     const [zone, setZone] = useState([
-        "Asia/Ho_Chi_Minh",
+        "Europe/London",
         "Asia/Tokyo",
-        "Europe/Rome",
+        "Asia/Kuala_Lumpur",
         "America/Chicago",
     ]);
 
@@ -31,14 +33,18 @@ function App() {
 
     return (
         <div className="app">
-            {zone.length > 0 &&
-                zone.map((item) => (
-                    <ClockPage
-                        key={item}
-                        timeZone={item}
-                        onClick={handleRemoveClock}
-                    />
-                ))}
+            <Header />
+            <Main />
+            <div className="main-time">
+                {zone.length > 0 &&
+                    zone.map((item) => (
+                        <ClockPage
+                            key={item}
+                            timeZone={item}
+                            onClick={handleRemoveClock}
+                        />
+                    ))}
+            </div>
             <TimeZone handleChangeZone={handleChangeZone} />
         </div>
     );

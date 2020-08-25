@@ -1,0 +1,12 @@
+.main-clock {
+  display: flex;
+  width: 100%;
+  font-size: 30px;
+}
+.main-clock--left {
+  flex: 1.6;
+}
+.main-clock--right {
+  flex: 1;
+  text-align: left;
+}

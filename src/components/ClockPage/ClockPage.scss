@@ -11,6 +11,7 @@
     width: 350px;
     margin-right: 45px;
     margin-bottom: 15px;
+    position: relative;
 
     &__zone {
         font-size: 30px;
@@ -25,4 +26,29 @@
     &__date {
         font-size: 25px;
     }
+}
+
+.remove-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 25px;
+    visibility: hidden;
+    transition: width .3s ease-in-out 0s;
+    cursor: pointer;
+    animation: fadeIn .3s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.time-box:hover .remove-button {
+    visibility: visible;
 }
