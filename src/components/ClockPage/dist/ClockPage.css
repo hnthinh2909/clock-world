@@ -1,0 +1,24 @@
+.clock-page {
+  display: inline-flex;
+  justify-content: flex-start;
+}
+
+.time-box {
+  border: 1px solid black;
+  border-radius: 8px;
+  display: inline-block;
+  width: 350px;
+  margin-right: 45px;
+  margin-bottom: 15px;
+}
+.time-box__zone {
+  font-size: 30px;
+  margin: 0;
+}
+.time-box__time {
+  font-size: 45px;
+  margin: 0;
+}
+.time-box__date {
+  font-size: 25px;
+}

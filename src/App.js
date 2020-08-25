@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.scss";
+import ClockPage from "./components/ClockPage";
+import TimeZone from "./components/TimeZone";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [zone, setZone] = useState([
+        "Asia/Ho_Chi_Minh",
+        "Asia/Tokyo",
+        "Europe/Rome",
+        "America/Chicago",
+    ]);
+
+    const handleChangeZone = (item) => {
+        const findZone = zone.findIndex((value) => value === item.zone);
+        if (findZone > 0) return;
+
+        setZone([...zone, item]);
+        console.log(zone);
+    };
+
+    const handleRemoveClock = (item) => {
+        console.log("item", item);
+        const findZone = zone.findIndex((value) => value === item.zone);
+        if (findZone < 0) return;
+
+        const newZone = [...zone];
+        newZone.splice(findZone, 1);
+        setZone(newZone);
+    };
+
+    return (
+        <div className="app">
+            {zone.length > 0 &&
+                zone.map((item) => (
+                    <ClockPage
+                        key={item}
+                        timeZone={item}
+                        onClick={handleRemoveClock}
+                    />
+                ))}
+            <TimeZone handleChangeZone={handleChangeZone} />
+        </div>
+    );
 }
 
 export default App;
